@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1545253604822564351
+--- !u!1 &531148184300707758
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,60 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8128698844990491677}
-  - component: {fileID: 4475708577573934021}
-  - component: {fileID: 7762926420048573629}
+  - component: {fileID: 1169346035941839062}
+  - component: {fileID: 5535142149435771758}
   m_Layer: 0
-  m_Name: Front
+  m_Name: Card Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8128698844990491677
+--- !u!4 &1169346035941839062
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545253604822564351}
+  m_GameObject: {fileID: 531148184300707758}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.14}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.100000046, y: 0.10000012, z: 0.10000012}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6603462409535151776}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4475708577573934021
-MeshFilter:
+  m_Father: {fileID: 3022819076626725573}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &5535142149435771758
+SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545253604822564351}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7762926420048573629
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545253604822564351}
+  m_GameObject: {fileID: 531148184300707758}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aea877c5800ada648b6f39e4dd7015b4, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +65,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -82,8 +73,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6437956964709412803
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.68, y: 10.63}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &2072149301932275233
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,60 +92,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7971405415225774906}
-  - component: {fileID: 4599703194334884385}
-  - component: {fileID: 3762432562872646724}
+  - component: {fileID: 9013582870692801322}
+  - component: {fileID: 8927780959527724568}
   m_Layer: 0
-  m_Name: Back
+  m_Name: Card Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7971405415225774906
+--- !u!4 &9013582870692801322
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6437956964709412803}
+  m_GameObject: {fileID: 2072149301932275233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.01, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.14}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.100000046, y: 0.10000012, z: 0.10000012}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6603462409535151776}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
---- !u!33 &4599703194334884385
-MeshFilter:
+  m_Father: {fileID: 3022819076626725573}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &8927780959527724568
+SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6437956964709412803}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3762432562872646724
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6437956964709412803}
+  m_GameObject: {fileID: 2072149301932275233}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b4d7c53e149749949993f29f085a751d, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,7 +149,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -165,8 +157,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6882504264459742888
+  m_Sprite: {fileID: 21300000, guid: c7b6da8f822c8f140a97d71c9c7486b9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.68, y: 10.63}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &4629886041149721941
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,8 +176,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6603462409535151776}
-  - component: {fileID: 8373889531460071381}
+  - component: {fileID: 3022819076626725573}
+  - component: {fileID: 3648880435879005372}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -183,86 +185,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6603462409535151776
+--- !u!4 &3022819076626725573
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6882504264459742888}
+  m_GameObject: {fileID: 4629886041149721941}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8128698844990491677}
-  - {fileID: 7971405415225774906}
+  - {fileID: 1169346035941839062}
+  - {fileID: 9013582870692801322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8373889531460071381
+--- !u!114 &3648880435879005372
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6882504264459742888}
+  m_GameObject: {fileID: 4629886041149721941}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b0a875c6dae7d248885ee08eb501bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardFront: {fileID: 1545253604822564351}
-  cardTextures:
-  - {fileID: 2800000, guid: f811a2fc00207d942a2a1193de990d9c, type: 3}
-  - {fileID: 2800000, guid: dc90c50109774f44dbb44bed658082bb, type: 3}
-  - {fileID: 2800000, guid: 8dde443905767044ea24414f16e936aa, type: 3}
-  - {fileID: 2800000, guid: 420dff022093faa40b8e655cd3501ab1, type: 3}
-  - {fileID: 2800000, guid: 4f474289dffd210499ee3b1e09327b83, type: 3}
-  - {fileID: 2800000, guid: e13565980f1907e4596c3653f12aced8, type: 3}
-  - {fileID: 2800000, guid: 09c89db994435f34a90e5d73036eea1b, type: 3}
-  - {fileID: 2800000, guid: 51da59293e8162f45bfa36fc11d78ee6, type: 3}
-  - {fileID: 2800000, guid: e98746db9451cca4eb603774fa7cc0fb, type: 3}
-  - {fileID: 2800000, guid: 4d30f43842c755f4790be452a0c415f9, type: 3}
-  - {fileID: 2800000, guid: 5c3219a753ba55e46b88e96da35d0fbc, type: 3}
-  - {fileID: 2800000, guid: cfc62fa7833561f489c488645094483e, type: 3}
-  - {fileID: 2800000, guid: ac00fde0a6488e544a73db13701050a2, type: 3}
-  - {fileID: 2800000, guid: ef55a4a4320f09f49b8513b6c37f001d, type: 3}
-  - {fileID: 2800000, guid: 05ba1ece2c902c84ba190f18bad32da8, type: 3}
-  - {fileID: 2800000, guid: 64e2987f32232ce4fbb235a947cee8e6, type: 3}
-  - {fileID: 2800000, guid: 828e0d3123389d14a8ead1452a5e0233, type: 3}
-  - {fileID: 2800000, guid: b527cc37803ad1e458f98f8af8297ab3, type: 3}
-  - {fileID: 2800000, guid: 10b119ad74ce75d4d9064318c0023df2, type: 3}
-  - {fileID: 2800000, guid: c4b32879899a8a143b1dd80b00a850b7, type: 3}
-  - {fileID: 2800000, guid: ff0b10c292bee3744b12faf1f7cefde9, type: 3}
-  - {fileID: 2800000, guid: 2b1bb35c1ce045c42b0bc238a45a9e07, type: 3}
-  - {fileID: 2800000, guid: f9d2852600df812499b2b4e6a8b5e902, type: 3}
-  - {fileID: 2800000, guid: 7db275a01b174ee458180f422e53a405, type: 3}
-  - {fileID: 2800000, guid: a20f71bb761190a40b52a8d391062e5a, type: 3}
-  - {fileID: 2800000, guid: c42b4604f5a2ea34a96448043bf9a64c, type: 3}
-  - {fileID: 2800000, guid: 4429a28017cb3694ebf5a3826c88905d, type: 3}
-  - {fileID: 2800000, guid: a64bc8e12422c0841aa004c2ff387f74, type: 3}
-  - {fileID: 2800000, guid: b63c90a5b5112b64ab9730c1c447e53d, type: 3}
-  - {fileID: 2800000, guid: e5d4613fe6462054f82cef5e622f96a7, type: 3}
-  - {fileID: 2800000, guid: c172caf47d856a546a18460b52953ccd, type: 3}
-  - {fileID: 2800000, guid: f926455a817e4c34c9aa2639bc3d5966, type: 3}
-  - {fileID: 2800000, guid: c91c3e69401ac8944ad1bea5fc884f1d, type: 3}
-  - {fileID: 2800000, guid: 0c28a73c08df5dd4c8503e82441b49e2, type: 3}
-  - {fileID: 2800000, guid: e7e111e30fcf276478980a7b49b98e12, type: 3}
-  - {fileID: 2800000, guid: 07154a1ce6f3a29429fa0b3ea0f4b27d, type: 3}
-  - {fileID: 2800000, guid: af1b9b60a84b01b4a995a7ff382612fe, type: 3}
-  - {fileID: 2800000, guid: e76f43f0c63598a498246dff420900c7, type: 3}
-  - {fileID: 2800000, guid: 650e968d69e625744aadd4b9e5fa8819, type: 3}
-  - {fileID: 2800000, guid: f31377a3254737a499c5d43eefc3c3a9, type: 3}
-  - {fileID: 2800000, guid: 16de9e7111ec6624eaad1381e18f48c6, type: 3}
-  - {fileID: 2800000, guid: 9fcb2b0b865b149499c510b8b1eb8fda, type: 3}
-  - {fileID: 2800000, guid: 8527a6091260c85429c146d7a392ddea, type: 3}
-  - {fileID: 2800000, guid: d69323f5288f77a44a0e63663c539f49, type: 3}
-  - {fileID: 2800000, guid: 34fb1543af9b6a8478ff67d353155c07, type: 3}
-  - {fileID: 2800000, guid: 83f01b7cc33bad3429fe2b1aa3f5e635, type: 3}
-  - {fileID: 2800000, guid: 7aa8b2830a5f1a14eaef6316bf690153, type: 3}
-  - {fileID: 2800000, guid: 9e0d2509610832e4a8a77adb24950417, type: 3}
-  - {fileID: 2800000, guid: 187518a500051124d8b8a1de4a904db8, type: 3}
-  - {fileID: 2800000, guid: e12cb244c2b8f094e8bdda67315c76cd, type: 3}
-  - {fileID: 2800000, guid: 56352c34fb1369c488884eee33fb3756, type: 3}
-  - {fileID: 2800000, guid: 3d068706c2f04c743abb6c368953f9dc, type: 3}
+  cardFront: {fileID: 0}
+  cardTextures: []
