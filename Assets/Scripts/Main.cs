@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-    public GameObject card;
+    public GameObject cardPrefab;
     public GameObject spawnPosition;
     public Sprite[] cardTextures;
 
@@ -15,7 +15,7 @@ public class Main : MonoBehaviour
         //Instantiate card
         Vector3 spawnPos = spawnPosition.transform.position;
         spawnPos.y = 1.75f;
-        Instantiate(card, spawnPos, spawnPosition.transform.rotation);
+        Instantiate(cardPrefab, spawnPos, spawnPosition.transform.rotation);
     }
     void Update()
     {
