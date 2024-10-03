@@ -13,7 +13,9 @@ public class Main : MonoBehaviour
     void Start()
     {
         //Instantiate card
-        Instantiate(card, spawnPosition.transform.position, spawnPosition.transform.rotation);
+        Vector3 spawnPos = spawnPosition.transform.position;
+        spawnPos.y = 1.75f;
+        Instantiate(card, spawnPos, spawnPosition.transform.rotation);
     }
     void Update()
     {
