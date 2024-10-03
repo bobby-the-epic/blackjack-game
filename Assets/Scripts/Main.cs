@@ -5,20 +5,31 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     public GameObject cardPrefab;
-    public GameObject spawnPosition;
+    public GameObject deck;
     public Sprite[] cardTextures;
 
+    int playerPoints, dealerPoints;
     SpriteRenderer cardSprite;
+    GameObject newCard;
+    Vector3 spawnPos;
+    GameObject[] dealerCards;
+    List<GameObject> playerCards;
 
     void Start()
     {
-        //Instantiate card
-        Vector3 spawnPos = spawnPosition.transform.position;
+        dealerCards = new GameObject[2];
+        // The spawn position of the cards is under the deck so it looks like a card is physically drawn.
+        spawnPos = deck.transform.position;
         spawnPos.y = 1.75f;
-        Instantiate(cardPrefab, spawnPos, spawnPosition.transform.rotation);
+        DrawCard();
     }
     void Update()
     {
-
+    }
+    void DrawCard()
+    {
+        newCard = Instantiate(cardPrefab, spawnPos, deck.transform.rotation);
+        Card cardScript = newCard.GetComponent<Card>();
+        cardScript.SetCard(cardTextures[Random.Range(0, cardTextures.Length)]);
     }
 }

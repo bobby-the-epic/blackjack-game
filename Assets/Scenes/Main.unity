@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a8631ffa04ab34daff0d48f0522d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 4629886041149721941, guid: 5f53bd24058882542a8f993b5bb858ec, type: 3}
+  cardPrefab: {fileID: 4629886041149721941, guid: 5f53bd24058882542a8f993b5bb858ec, type: 3}
   spawnPosition: {fileID: 1150338036}
   cardTextures:
   - {fileID: 21300000, guid: f811a2fc00207d942a2a1193de990d9c, type: 3}
