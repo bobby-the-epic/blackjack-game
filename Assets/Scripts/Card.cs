@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public GameObject cardFront;
+    public GameObject cardFace;
     public Texture2D[] cardTextures;
 
     Material cardMat;
     // use SetTexture method to set the texture
     void Start()
     {
-        cardMat = cardFront.GetComponent<Renderer>().material;
+        cardMat = cardFace.GetComponent<Renderer>().material;
     }
     void Update()
     {
