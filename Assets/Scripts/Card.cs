@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    void Start()
+    public GameObject cardFront;
+    public SpriteRenderer spriteRenderer;
+
+    void Awake()
     {
+        spriteRenderer = cardFront.GetComponent<SpriteRenderer>();
     }
-    void Update()
+    public void SetCard(Sprite sprite)
     {
+        spriteRenderer.sprite = sprite;
     }
 }
