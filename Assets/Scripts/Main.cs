@@ -20,7 +20,7 @@ public class Main : MonoBehaviour
         dealerCards = new GameObject[2];
         // The spawn position of the cards is under the deck so it looks like a card is physically drawn.
         spawnPos = deck.transform.position;
-        spawnPos.y = 1.75f;
+        spawnPos.y = 1.74f;
         DrawCard();
     }
     void Update()
