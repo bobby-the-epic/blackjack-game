@@ -28,8 +28,9 @@ public class Main : MonoBehaviour
     }
     void DrawCard()
     {
+        int index = Random.Range(0, cardTextures.Length);
         newCard = Instantiate(cardPrefab, spawnPos, deck.transform.rotation);
         Card cardScript = newCard.GetComponent<Card>();
-        cardScript.SetCard(cardTextures[Random.Range(0, cardTextures.Length)]);
+        cardScript.SetCard(cardTextures[index]);
     }
 }
