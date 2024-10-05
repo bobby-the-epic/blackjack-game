@@ -4,33 +4,122 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-    public GameObject cardPrefab;
-    public GameObject deck;
-    public Sprite[] cardTextures;
-
-    int playerPoints, dealerPoints;
-    SpriteRenderer cardSprite;
+    const int deckSize = 52;
+    int playerPoints, playerCardNum, dealerPoints, dealerCardNum;
+    float xStep = 0.25f;
+    float zStep = 0.5f;
     GameObject newCard;
-    Vector3 spawnPos;
-    GameObject[] dealerCards;
-    List<GameObject> playerCards;
+
+    [SerializeField]
+    GameObject cardPrefab, deckObject, dealerCardsPos, playerCardsPos;
+    [SerializeField]
+    Sprite[] cardTextures;
+    [SerializeField]
+    List<GameObject> playerCards, dealerCards, deck;
+
+    // TODO: make a deck list with gameobjects as an object pool.
+    // Rework draw function.
 
     void Start()
     {
-        dealerCards = new GameObject[2];
-        // The spawn position of the cards is under the deck so it looks like a card is physically drawn.
-        spawnPos = deck.transform.position;
-        spawnPos.y = 1.74f;
-        DrawCard();
+        deck = new List<GameObject>(deckSize);
+        DeckInit();
+        ShuffleDeck();
+        DrawCard(false);
+        DrawCard(true);
+        DrawCard(false);
+        DrawCard(true);
+        DrawCard(false);
+        DrawCard(false);
+        DrawCard(true);
     }
     void Update()
     {
     }
-    void DrawCard()
+    void Restart()
     {
-        int index = Random.Range(0, cardTextures.Length);
-        newCard = Instantiate(cardPrefab, spawnPos, deck.transform.rotation);
-        Card cardScript = newCard.GetComponent<Card>();
-        cardScript.SetCard(cardTextures[index]);
+        // Sends the player's and dealer's cards back to the deck,
+        // clears the lists, and sets all relevant variables to 0.
+
+        foreach (GameObject card in playerCards)
+            deck.Add(card);
+        foreach (GameObject card in dealerCards)
+            deck.Add(card);
+
+        playerCards.Clear();
+        dealerCards.Clear();
+        dealerCardNum = 0;
+        playerCardNum = 0;
+        dealerPoints = 0;
+        playerPoints = 0;
+    }
+    void DeckInit()
+    {
+        // Spawns the cards inside the deck object and deactivates them until they are needed.
+        GameObject card;
+        Card cardScript;
+        Vector3 spawnPos = deckObject.transform.position;
+        spawnPos.y -= .01f;
+        for (int counter = 0; counter < deckSize; counter++)
+        {
+            card = Instantiate(cardPrefab, deckObject.transform.position, deckObject.transform.rotation);
+            cardScript = card.GetComponent<Card>();
+            cardScript.SetCard(cardTextures[counter]);
+            card.SetActive(false);
+            card.transform.SetParent(gameObject.transform);
+            deck.Add(card);
+        }
+    }
+    void ShuffleDeck()
+    {
+        int index;
+        List<Sprite> temp = new List<Sprite>(cardTextures);
+        Card cardScript;
+        foreach (GameObject card in deck)
+        {
+            index = Random.Range(0, temp.Count);
+            cardScript = card.GetComponent<Card>();
+            cardScript.SetCard(temp[index]);
+            temp.RemoveAt(index);
+        }
+    }
+    void DrawCard(bool isPlayer)
+    {
+        Vector3 cardPos;
+        Quaternion cardRot;
+        int cardNum;
+        newCard = deck[0];
+        deck.RemoveAt(0);
+
+        if (isPlayer)
+        {
+            playerCardNum++;
+            cardNum = playerCardNum;
+            cardPos = playerCardsPos.transform.position;
+            cardRot = playerCardsPos.transform.rotation;
+            playerCards.Add(newCard);
+        }
+        else
+        {
+            dealerCardNum++;
+            cardNum = dealerCardNum;
+            cardPos = dealerCardsPos.transform.position;
+            cardRot = dealerCardsPos.transform.rotation;
+            dealerCards.Add(newCard);
+        }
+        if (cardNum > 1)
+        {
+            // Moves the card's position diagonally if there is more than one
+            // so that they don't stack on top of each other.
+            cardPos.x += (isPlayer ? xStep : -xStep) * (cardNum - 1);
+            cardPos.z += (isPlayer ? zStep : -zStep) * (cardNum - 1);
+        }
+        newCard.SetActive(true);
+        newCard.transform.position = cardPos;
+        newCard.transform.rotation = cardRot;
+        // Sets the dealer's hidden card upside down.
+        if (!isPlayer && dealerCardNum == 1)
+            newCard.transform.Rotate(Vector3.forward * 180);
+        newCard.transform.SetParent(isPlayer ? playerCardsPos.transform : dealerCardsPos.transform);
     }
 }
