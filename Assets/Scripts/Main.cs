@@ -42,9 +42,19 @@ public class Main : MonoBehaviour
         // clears the lists, and sets all relevant variables to 0.
 
         foreach (GameObject card in playerCards)
+        {
             deck.Add(card);
+            card.transform.position = deckObject.transform.position;
+            card.transform.SetParent(gameObject.transform);
+            card.SetActive(false);
+        }
         foreach (GameObject card in dealerCards)
+        {
             deck.Add(card);
+            card.transform.position = deckObject.transform.position;
+            card.transform.SetParent(gameObject.transform);
+            card.SetActive(false);
+        }
 
         playerCards.Clear();
         dealerCards.Clear();
@@ -70,6 +80,11 @@ public class Main : MonoBehaviour
     }
     void ShuffleDeck()
     {
+        /*
+            Creates a temporary list of the card textures and assigns a random index of that list
+            to each of the cards in the deck. After a texture has been assigned, the element at that
+            index is removed from the list. This is so that each card in the deck is assigned a unique texture.
+        */
         int index;
         List<Sprite> temp = new List<Sprite>(cardTextures);
         Card cardScript;
