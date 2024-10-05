@@ -5,10 +5,10 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public int pointValue { get; private set; } = 0;
+    public bool isAce { get; private set; } = false;
     public GameObject cardFront;
     public SpriteRenderer spriteRenderer;
 
-    bool isAce = false;
 
     void Awake()
     {
