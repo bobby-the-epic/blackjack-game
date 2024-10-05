@@ -58,8 +58,6 @@ public class Main : MonoBehaviour
         // Spawns the cards inside the deck object and deactivates them until they are needed.
         GameObject card;
         Card cardScript;
-        Vector3 spawnPos = deckObject.transform.position;
-        spawnPos.y -= .01f;
         for (int counter = 0; counter < deckSize; counter++)
         {
             card = Instantiate(cardPrefab, deckObject.transform.position, deckObject.transform.rotation);
