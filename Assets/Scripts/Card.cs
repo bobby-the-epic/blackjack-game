@@ -14,5 +14,6 @@ public class Card : MonoBehaviour
     public void SetCard(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
+        name = sprite.name;
     }
 }
