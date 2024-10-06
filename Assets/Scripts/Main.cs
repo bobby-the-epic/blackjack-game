@@ -7,7 +7,7 @@ public class Main : MonoBehaviour
 {
     const int deckSize = 52;
     int playerCardNum, dealerCardNum;
-    bool playerBust, dealerBust;
+    bool playerBust, dealerBust, inMainMenu;
     float xStep = 0.25f;
     float zStep = 0.5f;
 
@@ -15,7 +15,7 @@ public class Main : MonoBehaviour
     int playerPoints, dealerPoints;
     [SerializeField]
     GameObject cardPrefab, deckObject, dealerCardsPos, playerCardsPos,
-    mainMenu, gameOverMenu, playModeButtons;
+    mainMenu, optionsMenu, gameOverMenu, playModeButtons;
     [SerializeField]
     TextMeshProUGUI playerScore, dealerScore;
     [SerializeField]
@@ -175,11 +175,22 @@ public class Main : MonoBehaviour
     public void PlayGame()
     {
         mainMenu.SetActive(false);
+        inMainMenu = false;
         deckObject.SetActive(true);
         playerScore.gameObject.SetActive(true);
         dealerScore.gameObject.SetActive(true);
         DrawCard(false);
         DrawCard(false);
+    }
+    public void OptionsMenu()
+    {
+        optionsMenu.SetActive(true);
+    }
+    public void BackButton()
+    {
+        optionsMenu.SetActive(false);
+        if (inMainMenu)
+            mainMenu.SetActive(true);
     }
     public void Quit()
     {

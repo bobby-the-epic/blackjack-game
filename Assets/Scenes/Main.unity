@@ -466,7 +466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &238581789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2493,6 +2493,7 @@ MonoBehaviour:
   dealerCardsPos: {fileID: 1432396993}
   playerCardsPos: {fileID: 1089589904}
   mainMenu: {fileID: 604889428}
+  optionsMenu: {fileID: 238581788}
   gameOverMenu: {fileID: 1698780537}
   playModeButtons: {fileID: 1586433462}
   playerScore: {fileID: 854701140}
@@ -2693,12 +2694,12 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2032614550}
   - {fileID: 963194228}
   - {fileID: 1562619019}
   - {fileID: 1780047725}
   - {fileID: 320313667}
   - {fileID: 27606780}
-  - {fileID: 2032614550}
   - {fileID: 1432396994}
   - {fileID: 1089589905}
   - {fileID: 1509097469}
