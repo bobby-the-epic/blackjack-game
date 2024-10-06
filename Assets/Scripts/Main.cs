@@ -17,9 +17,6 @@ public class Main : MonoBehaviour
     [SerializeField]
     List<GameObject> playerCards, dealerCards, deck;
 
-    // TODO: make a deck list with gameobjects as an object pool.
-    // Rework draw function.
-
     void Start()
     {
         deck = new List<GameObject>(deckSize);
