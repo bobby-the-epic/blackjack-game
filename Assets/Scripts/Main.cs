@@ -7,7 +7,8 @@ public class Main : MonoBehaviour
 {
     const int deckSize = 52;
     int playerCardNum, dealerCardNum;
-    bool playerBust, dealerBust, inMainMenu;
+    bool playerBust, dealerBust;
+    bool inMainMenu = true;
     float xStep = 0.25f;
     float zStep = 0.5f;
 
@@ -184,9 +185,10 @@ public class Main : MonoBehaviour
     }
     public void OptionsMenu()
     {
+        mainMenu.SetActive(false);
         optionsMenu.SetActive(true);
     }
-    public void BackButton()
+    public void GoBack()
     {
         optionsMenu.SetActive(false);
         if (inMainMenu)
