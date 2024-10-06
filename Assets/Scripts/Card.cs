@@ -28,6 +28,7 @@ public class Card : MonoBehaviour
 
         switch (num)
         {
+            // Aces are worth 0 so they can be 1 or 11 based on the other cards in play.
             case 1:
                 isAce = true;
                 pointValue = 0;
