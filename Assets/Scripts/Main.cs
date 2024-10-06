@@ -5,11 +5,13 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     const int deckSize = 52;
-    int playerPoints, playerCardNum, dealerPoints, dealerCardNum;
+    int playerCardNum, dealerCardNum;
+    bool playerBust, dealerBust;
     float xStep = 0.25f;
     float zStep = 0.5f;
-    GameObject newCard;
 
+    [SerializeField]
+    int playerPoints, dealerPoints;
     [SerializeField]
     GameObject cardPrefab, deckObject, dealerCardsPos, playerCardsPos;
     [SerializeField]
@@ -59,6 +61,8 @@ public class Main : MonoBehaviour
         playerCardNum = 0;
         dealerPoints = 0;
         playerPoints = 0;
+        playerBust = false;
+        dealerBust = false;
     }
     void DeckInit()
     {
@@ -98,7 +102,7 @@ public class Main : MonoBehaviour
         Vector3 cardPos;
         Quaternion cardRot;
         int cardNum;
-        newCard = deck[0];
+        GameObject newCard = deck[0];
         deck.RemoveAt(0);
 
         if (isPlayer)
@@ -131,5 +135,44 @@ public class Main : MonoBehaviour
         if (!isPlayer && dealerCardNum == 1)
             newCard.transform.Rotate(Vector3.forward * 180);
         newCard.transform.SetParent(isPlayer ? playerCardsPos.transform : dealerCardsPos.transform);
+        AddPoints(isPlayer);
+    }
+    void AddPoints(bool isPlayer)
+    {
+        int points = 0;
+        int aceCount = 0;
+        List<GameObject> hand = isPlayer ? playerCards : dealerCards;
+        foreach (GameObject card in hand)
+        {
+            /* 
+                Iterate through the player's/dealer's cards and calculate the points.
+                Aces are worth 0 at first, then considered after all of the other cards 
+                in the hand are added to the point total.
+            */
+            Card cardScript = card.GetComponent<Card>();
+            points += cardScript.pointValue;
+            if (cardScript.isAce)
+                aceCount++;
+        }
+        for (int counter = 0; counter < aceCount; counter++)
+        {
+            // Calculates the value of the aces.
+            if (points > 10)
+                points += 1;
+            else
+                points += 11;
+        }
+        if (isPlayer)
+        {
+            playerPoints = points;
+            if (playerPoints > 21)
+                playerBust = true;
+        }
+        else
+        {
+            dealerPoints = points;
+            if (dealerPoints > 21)
+                dealerBust = true;
+        }
     }
 }
