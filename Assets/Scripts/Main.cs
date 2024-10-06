@@ -185,7 +185,8 @@ public class Main : MonoBehaviour
     }
     public void OptionsMenu()
     {
-        mainMenu.SetActive(false);
+        if (inMainMenu)
+            mainMenu.SetActive(false);
         optionsMenu.SetActive(true);
     }
     public void GoBack()
