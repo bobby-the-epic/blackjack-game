@@ -181,4 +181,8 @@ public class Main : MonoBehaviour
         DrawCard(false);
         DrawCard(false);
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
