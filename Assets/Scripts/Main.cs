@@ -28,16 +28,6 @@ public class Main : MonoBehaviour
         deck = new List<GameObject>(deckSize);
         DeckInit();
         ShuffleDeck();
-        DrawCard(true);
-        DrawCard(true);
-        DrawCard(true);
-        DrawCard(false);
-        DrawCard(false);
-        DrawCard(true);
-        DrawCard(false);
-    }
-    void Update()
-    {
     }
     void Restart()
     {
@@ -181,5 +171,11 @@ public class Main : MonoBehaviour
                 dealerBust = true;
             dealerScore.text = string.Format("Dealer:\n{0}", dealerPoints);
         }
+    }
+    public void PlayGame()
+    {
+        mainMenu.SetActive(false);
+        DrawCard(false);
+        DrawCard(false);
     }
 }
