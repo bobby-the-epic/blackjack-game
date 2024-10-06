@@ -132,15 +132,6 @@ public class Main : MonoBehaviour
             dealerScore.text = string.Format("Dealer:\n{0}", dealerPoints);
         }
     }
-    public void PlayGame()
-    {
-        mainMenu.SetActive(false);
-        deckObject.SetActive(true);
-        playerScore.gameObject.SetActive(true);
-        dealerScore.gameObject.SetActive(true);
-        DrawCard(false);
-        DrawCard(false);
-    }
     public void DrawCard(bool isPlayer)
     {
         Vector3 cardPos;
@@ -180,5 +171,14 @@ public class Main : MonoBehaviour
             newCard.transform.Rotate(Vector3.forward * 180);
         newCard.transform.SetParent(isPlayer ? playerCardsPos.transform : dealerCardsPos.transform);
         AddPoints(isPlayer);
+    }
+    public void PlayGame()
+    {
+        mainMenu.SetActive(false);
+        deckObject.SetActive(true);
+        playerScore.gameObject.SetActive(true);
+        dealerScore.gameObject.SetActive(true);
+        DrawCard(false);
+        DrawCard(false);
     }
 }
