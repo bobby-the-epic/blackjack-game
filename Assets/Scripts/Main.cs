@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Main : MonoBehaviour
@@ -13,7 +14,10 @@ public class Main : MonoBehaviour
     [SerializeField]
     int playerPoints, dealerPoints;
     [SerializeField]
-    GameObject cardPrefab, deckObject, dealerCardsPos, playerCardsPos;
+    GameObject cardPrefab, deckObject, dealerCardsPos, playerCardsPos,
+    mainMenu, gameOverMenu, playModeButtons;
+    [SerializeField]
+    TextMeshProUGUI playerScore, dealerScore;
     [SerializeField]
     Sprite[] cardTextures;
     [SerializeField]
@@ -24,13 +28,13 @@ public class Main : MonoBehaviour
         deck = new List<GameObject>(deckSize);
         DeckInit();
         ShuffleDeck();
+        DrawCard(true);
+        DrawCard(true);
+        DrawCard(true);
+        DrawCard(false);
         DrawCard(false);
         DrawCard(true);
         DrawCard(false);
-        DrawCard(true);
-        DrawCard(false);
-        DrawCard(false);
-        DrawCard(true);
     }
     void Update()
     {
@@ -63,6 +67,7 @@ public class Main : MonoBehaviour
         playerPoints = 0;
         playerBust = false;
         dealerBust = false;
+        ShuffleDeck();
     }
     void DeckInit()
     {
@@ -97,7 +102,7 @@ public class Main : MonoBehaviour
             temp.RemoveAt(index);
         }
     }
-    void DrawCard(bool isPlayer)
+    public void DrawCard(bool isPlayer)
     {
         Vector3 cardPos;
         Quaternion cardRot;
@@ -167,12 +172,14 @@ public class Main : MonoBehaviour
             playerPoints = points;
             if (playerPoints > 21)
                 playerBust = true;
+            playerScore.text = string.Format("You:\n{0}", playerPoints);
         }
         else
         {
             dealerPoints = points;
             if (dealerPoints > 21)
                 dealerBust = true;
+            dealerScore.text = string.Format("Dealer:\n{0}", dealerPoints);
         }
     }
 }
