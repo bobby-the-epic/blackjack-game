@@ -92,46 +92,6 @@ public class Main : MonoBehaviour
             temp.RemoveAt(index);
         }
     }
-    public void DrawCard(bool isPlayer)
-    {
-        Vector3 cardPos;
-        Quaternion cardRot;
-        int cardNum;
-        GameObject newCard = deck[0];
-        deck.RemoveAt(0);
-
-        if (isPlayer)
-        {
-            playerCardNum++;
-            cardNum = playerCardNum;
-            cardPos = playerCardsPos.transform.position;
-            cardRot = playerCardsPos.transform.rotation;
-            playerCards.Add(newCard);
-        }
-        else
-        {
-            dealerCardNum++;
-            cardNum = dealerCardNum;
-            cardPos = dealerCardsPos.transform.position;
-            cardRot = dealerCardsPos.transform.rotation;
-            dealerCards.Add(newCard);
-        }
-        if (cardNum > 1)
-        {
-            // Moves the card's position diagonally if there is more than one
-            // so that they don't stack on top of each other.
-            cardPos.x += (isPlayer ? xStep : -xStep) * (cardNum - 1);
-            cardPos.z += (isPlayer ? zStep : -zStep) * (cardNum - 1);
-        }
-        newCard.SetActive(true);
-        newCard.transform.position = cardPos;
-        newCard.transform.rotation = cardRot;
-        // Sets the dealer's hidden card upside down.
-        if (!isPlayer && dealerCardNum == 1)
-            newCard.transform.Rotate(Vector3.forward * 180);
-        newCard.transform.SetParent(isPlayer ? playerCardsPos.transform : dealerCardsPos.transform);
-        AddPoints(isPlayer);
-    }
     void AddPoints(bool isPlayer)
     {
         int points = 0;
@@ -180,5 +140,45 @@ public class Main : MonoBehaviour
         dealerScore.gameObject.SetActive(true);
         DrawCard(false);
         DrawCard(false);
+    }
+    public void DrawCard(bool isPlayer)
+    {
+        Vector3 cardPos;
+        Quaternion cardRot;
+        int cardNum;
+        GameObject newCard = deck[0];
+        deck.RemoveAt(0);
+
+        if (isPlayer)
+        {
+            playerCardNum++;
+            cardNum = playerCardNum;
+            cardPos = playerCardsPos.transform.position;
+            cardRot = playerCardsPos.transform.rotation;
+            playerCards.Add(newCard);
+        }
+        else
+        {
+            dealerCardNum++;
+            cardNum = dealerCardNum;
+            cardPos = dealerCardsPos.transform.position;
+            cardRot = dealerCardsPos.transform.rotation;
+            dealerCards.Add(newCard);
+        }
+        if (cardNum > 1)
+        {
+            // Moves the card's position diagonally if there is more than one
+            // so that they don't stack on top of each other.
+            cardPos.x += (isPlayer ? xStep : -xStep) * (cardNum - 1);
+            cardPos.z += (isPlayer ? zStep : -zStep) * (cardNum - 1);
+        }
+        newCard.SetActive(true);
+        newCard.transform.position = cardPos;
+        newCard.transform.rotation = cardRot;
+        // Sets the dealer's hidden card upside down.
+        if (!isPlayer && dealerCardNum == 1)
+            newCard.transform.Rotate(Vector3.forward * 180);
+        newCard.transform.SetParent(isPlayer ? playerCardsPos.transform : dealerCardsPos.transform);
+        AddPoints(isPlayer);
     }
 }
