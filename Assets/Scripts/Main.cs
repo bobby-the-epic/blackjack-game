@@ -175,6 +175,7 @@ public class Main : MonoBehaviour
     public void PlayGame()
     {
         mainMenu.SetActive(false);
+        deckObject.SetActive(true);
         playerScore.gameObject.SetActive(true);
         dealerScore.gameObject.SetActive(true);
         DrawCard(false);
