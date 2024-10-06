@@ -34,9 +34,11 @@ public class Card : MonoBehaviour
                 pointValue = 0;
                 break;
             case > 10:
+                isAce = false;
                 pointValue = 10;
                 break;
             default:
+                isAce = false;
                 pointValue = num;
                 break;
         }
