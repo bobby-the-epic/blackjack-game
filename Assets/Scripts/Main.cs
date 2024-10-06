@@ -9,6 +9,7 @@ public class Main : MonoBehaviour
     int playerCardNum, dealerCardNum;
     bool playerBust, dealerBust;
     bool inMainMenu = true;
+    bool inPauseMenu = false;
     float xStep = 0.25f;
     float zStep = 0.5f;
 
@@ -16,7 +17,7 @@ public class Main : MonoBehaviour
     int playerPoints, dealerPoints;
     [SerializeField]
     GameObject cardPrefab, deckObject, dealerCardsPos, playerCardsPos,
-    mainMenu, optionsMenu, gameOverMenu, playModeButtons;
+    mainMenu, optionsMenu, pauseMenu, gameOverMenu, playModeButtons;
     [SerializeField]
     TextMeshProUGUI playerScore, dealerScore;
     [SerializeField]
@@ -29,6 +30,21 @@ public class Main : MonoBehaviour
         deck = new List<GameObject>(deckSize);
         DeckInit();
         ShuffleDeck();
+    }
+    void Update()
+    {
+        if (!inMainMenu && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!inPauseMenu)
+            {
+                pauseMenu.SetActive(true);
+                inPauseMenu = true;
+                playerScore.gameObject.SetActive(false);
+                dealerScore.gameObject.SetActive(false);
+            }
+            else
+                Resume();
+        }
     }
     void Restart()
     {
@@ -180,6 +196,9 @@ public class Main : MonoBehaviour
         deckObject.SetActive(true);
         playerScore.gameObject.SetActive(true);
         dealerScore.gameObject.SetActive(true);
+        playModeButtons.SetActive(true);
+        DrawCard(true);
+        DrawCard(true);
         DrawCard(false);
         DrawCard(false);
     }
@@ -187,6 +206,8 @@ public class Main : MonoBehaviour
     {
         if (inMainMenu)
             mainMenu.SetActive(false);
+        else if (inPauseMenu)
+            pauseMenu.SetActive(false);
         optionsMenu.SetActive(true);
     }
     public void GoBack()
@@ -194,9 +215,30 @@ public class Main : MonoBehaviour
         optionsMenu.SetActive(false);
         if (inMainMenu)
             mainMenu.SetActive(true);
+        else if (inPauseMenu)
+            pauseMenu.SetActive(true);
     }
     public void Quit()
     {
         Application.Quit();
+    }
+    public void QuitToMainMenu()
+    {
+        Restart();
+        inMainMenu = true;
+        inPauseMenu = false;
+        pauseMenu.SetActive(false);
+        mainMenu.SetActive(true);
+        deckObject.SetActive(false);
+        playerScore.gameObject.SetActive(false);
+        dealerScore.gameObject.SetActive(false);
+        playModeButtons.SetActive(false);
+    }
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        inPauseMenu = false;
+        playerScore.gameObject.SetActive(true);
+        dealerScore.gameObject.SetActive(true);
     }
 }
