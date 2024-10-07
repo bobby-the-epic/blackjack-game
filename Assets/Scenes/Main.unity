@@ -3031,7 +3031,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2032614549}
         m_TargetAssemblyTypeName: Main, Assembly-CSharp
-        m_MethodName: DealerReveal
+        m_MethodName: Stay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

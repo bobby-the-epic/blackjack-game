@@ -146,6 +146,8 @@ public class Main : MonoBehaviour
             dealerPoints = points;
             if (dealerPoints > 21)
                 dealerBust = true;
+            else if (dealerPoints == 21)
+                DealerReveal();
         }
     }
     public void DrawCard(bool isPlayer)
@@ -205,6 +207,10 @@ public class Main : MonoBehaviour
     {
         dealerCards[0].transform.Rotate(Vector3.forward * 180);
         dealerScore.text = string.Format("Dealer:\n{0}", dealerPoints);
+    }
+    public void Stay()
+    {
+        DealerReveal();
         playModeButtons.SetActive(false);
     }
     public void OptionsMenu()
