@@ -6,6 +6,8 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     const int deckSize = 52;
+    const bool player = true;
+    const bool dealer = false;
     int playerCardNum, dealerCardNum;
     bool playerBust, dealerBust;
     bool inMainMenu = true;
@@ -198,10 +200,10 @@ public class Main : MonoBehaviour
         playerScore.gameObject.SetActive(true);
         dealerScore.gameObject.SetActive(true);
         playModeButtons.SetActive(true);
-        DrawCard(true);
-        DrawCard(true);
-        DrawCard(false);
-        DrawCard(false);
+        DrawCard(player);
+        DrawCard(player);
+        DrawCard(dealer);
+        DrawCard(dealer);
     }
     public void DealerReveal()
     {
