@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
@@ -14,12 +15,15 @@ public class Main : MonoBehaviour
     bool inPauseMenu = false;
     float xStep = 0.25f;
     float zStep = 0.5f;
+    AudioSource gameAudio;
 
     [SerializeField]
     int playerPoints, dealerPoints;
     [SerializeField]
     GameObject cardPrefab, deckObject, dealerCardsPos, playerCardsPos,
     mainMenu, optionsMenu, pauseMenu, gameOverMenu, playModeButtons;
+    [SerializeField]
+    AudioClip cardSlide;
     [SerializeField]
     TextMeshProUGUI playerScore, dealerScore, gameOverText;
     [SerializeField]
@@ -30,6 +34,7 @@ public class Main : MonoBehaviour
     void Start()
     {
         deck = new List<GameObject>(deckSize);
+        gameAudio = GetComponent<AudioSource>();
         DeckInit();
         ShuffleDeck();
     }
@@ -229,6 +234,7 @@ public class Main : MonoBehaviour
             newCard.transform.Rotate(Vector3.forward * 180);
         newCard.transform.SetParent(isPlayer ? playerCardsPos.transform : dealerCardsPos.transform);
         AddPoints(isPlayer);
+        gameAudio.PlayOneShot(cardSlide);
     }
     public void PlayGame()
     {
