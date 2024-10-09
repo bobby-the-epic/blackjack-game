@@ -9,7 +9,7 @@ public class Main : MonoBehaviour
     const bool player = true;
     const bool dealer = false;
     int playerCardNum, dealerCardNum;
-    bool playerBust, dealerBust;
+    bool hiddenCardRevealed = false;
     bool inMainMenu = true;
     bool inPauseMenu = false;
     float xStep = 0.25f;
@@ -21,7 +21,7 @@ public class Main : MonoBehaviour
     GameObject cardPrefab, deckObject, dealerCardsPos, playerCardsPos,
     mainMenu, optionsMenu, pauseMenu, gameOverMenu, playModeButtons;
     [SerializeField]
-    TextMeshProUGUI playerScore, dealerScore;
+    TextMeshProUGUI playerScore, dealerScore, gameOverText;
     [SerializeField]
     Sprite[] cardTextures;
     [SerializeField]
@@ -74,13 +74,14 @@ public class Main : MonoBehaviour
         playerCardNum = 0;
         dealerPoints = 0;
         playerPoints = 0;
-        playerBust = false;
-        dealerBust = false;
+        hiddenCardRevealed = false;
+        dealerScore.gameObject.SetActive(false);
         ShuffleDeck();
     }
     void DeckInit()
     {
         // Spawns the cards inside the deck object and deactivates them until they are needed.
+
         GameObject card;
         Card cardScript;
         for (int counter = 0; counter < deckSize; counter++)
@@ -100,6 +101,7 @@ public class Main : MonoBehaviour
             to each of the cards in the deck. After a texture has been assigned, the element at that
             index is removed from the list. This is so that each card in the deck is assigned a unique texture.
         */
+
         int index;
         List<Sprite> temp = new List<Sprite>(cardTextures);
         Card cardScript;
@@ -123,6 +125,7 @@ public class Main : MonoBehaviour
                 Aces are worth 0 at first, then considered after all of the other cards 
                 in the hand are added to the point total.
             */
+
             Card cardScript = card.GetComponent<Card>();
             points += cardScript.pointValue;
             if (cardScript.isAce)
@@ -140,17 +143,52 @@ public class Main : MonoBehaviour
         {
             playerPoints = points;
             if (playerPoints > 21)
-                playerBust = true;
+                GameOver(player);
+            else if (playerPoints == 21)
+                GameOver(dealer);
             playerScore.text = string.Format("You:\n{0}", playerPoints);
         }
         else
         {
             dealerPoints = points;
             if (dealerPoints > 21)
-                dealerBust = true;
-            else if (dealerPoints == 21)
+            {
                 DealerReveal();
+                GameOver(dealer);
+            }
+            else if (dealerPoints == 21)
+            {
+                DealerReveal();
+                GameOver(player);
+            }
+            dealerScore.text = string.Format("Dealer\n{0}", dealerPoints);
         }
+    }
+    void GameOver(bool isPlayer)
+    {
+        if (isPlayer)
+            gameOverText.text = "You lose!";
+        else
+            gameOverText.text = "You win!";
+        playModeButtons.SetActive(false);
+        StartCoroutine(ResultReveal());
+    }
+    IEnumerator ResultReveal()
+    {
+        yield return new WaitForSeconds(1);
+        gameOverMenu.SetActive(true);
+    }
+    IEnumerator DealerPlay()
+    {
+        while (dealerPoints < 21 && dealerPoints <= playerPoints)
+        {
+            yield return new WaitForSeconds(1);
+            DrawCard(dealer);
+        }
+        if (dealerPoints > 21 || playerPoints > dealerPoints)
+            GameOver(dealer);
+        else
+            GameOver(player);
     }
     public void DrawCard(bool isPlayer)
     {
@@ -198,7 +236,6 @@ public class Main : MonoBehaviour
         inMainMenu = false;
         deckObject.SetActive(true);
         playerScore.gameObject.SetActive(true);
-        dealerScore.gameObject.SetActive(true);
         playModeButtons.SetActive(true);
         DrawCard(player);
         DrawCard(player);
@@ -207,13 +244,18 @@ public class Main : MonoBehaviour
     }
     public void DealerReveal()
     {
-        dealerCards[0].transform.Rotate(Vector3.forward * 180);
-        dealerScore.text = string.Format("Dealer:\n{0}", dealerPoints);
+        if (!hiddenCardRevealed)
+        {
+            hiddenCardRevealed = true;
+            dealerCards[0].transform.Rotate(Vector3.forward * 180);
+        }
+        dealerScore.gameObject.SetActive(true);
     }
     public void Stay()
     {
         DealerReveal();
         playModeButtons.SetActive(false);
+        StartCoroutine(DealerPlay());
     }
     public void OptionsMenu()
     {
@@ -239,8 +281,14 @@ public class Main : MonoBehaviour
     {
         Restart();
         inMainMenu = true;
-        inPauseMenu = false;
-        pauseMenu.SetActive(false);
+        if (inPauseMenu)
+        {
+            inPauseMenu = false;
+            pauseMenu.SetActive(false);
+        }
+        else
+            gameOverMenu.SetActive(false);
+
         mainMenu.SetActive(true);
         deckObject.SetActive(false);
         playerScore.gameObject.SetActive(false);
@@ -253,5 +301,11 @@ public class Main : MonoBehaviour
         inPauseMenu = false;
         playerScore.gameObject.SetActive(true);
         dealerScore.gameObject.SetActive(true);
+    }
+    public void RestartGame()
+    {
+        Restart();
+        gameOverMenu.SetActive(false);
+        PlayGame();
     }
 }
